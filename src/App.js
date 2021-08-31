@@ -1,8 +1,9 @@
 import './App.css';
-import { scaleBand, scaleLinear, extent} from 'd3';
+import { scaleBand, scaleLinear} from 'd3';
 import {useData} from  './components/useData'
 import { AxisBottom } from './components/AxisBottom';
 import { Border } from './components/Border';
+import { ContrailsEvolution } from './components/ContrailsEvolution';
 
 
 
@@ -35,14 +36,8 @@ function App() {
 
   const circleRadius = scaleLinear()
                         .range([5, 10])
-  const ClusterCircle = ({xScale, circleYScale, cluster, clusterInfo, time, offset}) => 
-    cluster.map(cl => (
-      <circle
-        cx={xScale(time) + offset}
-        cy={circleYScale(cluster.indexOf(cl))}
-        r={2}
-      />
-    ));
+
+
 
   return (
     <svg width={width} height={height}>
@@ -57,30 +52,15 @@ function App() {
           heightOffset = {margin.top}
           innerHeight={innerHeight}
         />
-        {
-          clusterKey.map(clk => {
-            let cluster = Object.keys(clusterData[clk])
-            circleYScale.domain([0, cluster.length])
-            console.log([0, cluster.length])
-            return(
-              <ClusterCircle 
-                xScale={xScale}
-                circleYScale = {circleYScale}
-                cluster = {cluster}
-                clusterInfo = {clusterData[clk]}
-                time={clk}
-                offset={margin.top}
 
-              />
-            )
-          })
-        }
-        {/* <ClusterCircle 
-          data={clusterData}
-          clusteKey={clusterKey}
+        <ContrailsEvolution 
+          clusterKey={clusterKey}
+          clusterData={clusterData}
           xScale={xScale}
           circleYScale={circleYScale}
-        /> */}
+          circleRadius={circleRadius}
+          offset={margin.top}
+        />
       </g>
     </svg>
   );
