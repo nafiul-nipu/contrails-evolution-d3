@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import {useData} from  './components/useData'
+
+
+const width = 960;
+const height = 500;
+const margin = {top:20, right:30, bottom:30, left:30};
 
 function App() {
+  const {clusterData, nodeLink} = useData();
+
+  if(!clusterData){
+    return <div>Loading .... </div>
+  }
+
+  const innerHeight = height - margin.top - margin.bottom;
+  const innerWidth = width - margin.left - margin.right;
+
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
     </div>
   );
 }
