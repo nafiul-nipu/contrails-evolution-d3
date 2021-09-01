@@ -36,32 +36,6 @@ function App() {
 
   const circleRadius = scaleLinear()
                         .range([5, 10])
-
-
-  // const NodeLink = ({circleYScale}) => {
-  // //   var element = document.getElementById('14' );
-  // //   // var rect = element.getBoundingClientRect();
-  // //   console.log(element)
-  // //   // console.log(rect)
-  // // // console.log(nodeLink)
-  //   let x1 = xScale('0.06')
-  //   let x2 = xScale('0.07')
-  //   let xx = scaleLinear().domain([0,0]).range()
-  //   let y1 = circleYScale(0)
-  //   circleYScale.domain([0, 2])
-  //   let y2 = circleYScale(2)
-  //   console.log(x1,x2,y1,y2)
-  //   return(
-  //     <line
-  //         x1={0}
-  //         y1={20}
-  //         x2={60}
-  //         y2={54}
-  //         stroke='black'
-  //       />
-  //   )
-
-  // }
   
 
   return (

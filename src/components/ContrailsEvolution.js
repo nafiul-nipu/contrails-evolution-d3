@@ -1,5 +1,5 @@
-// import { EvolutionCircle } from "./EvolutionCircle";
-import { linkHorizontal} from "d3";
+import { NodeDiagram } from "./NodeDiagram";
+import { LinkDiagram } from "./LinkDiagram";
 
 export   const ContrailsEvolution = ({
     clusterKey, 
@@ -55,26 +55,14 @@ export   const ContrailsEvolution = ({
         )
 
       });
-      console.log(evolutionData.links)
       return(
         <g transform={`translate(${offset},0)`}>
-          {evolutionData.nodes.map(node=>(
-            <circle className="circleCon"
-              cx={node.x}
-              cy={node.y}
-              r={node.r}
-              
-            />
-          ))}
-          {evolutionData.links.map(link => (
-            <path className="pathCon"
-              d={linkHorizontal()
-                  .source(d =>d.source)
-                  .target(d=>d.target)
-                  (link)
-                }
-            />
-          ))}
+          <NodeDiagram 
+            nodes={evolutionData.nodes}
+          />
+          <LinkDiagram 
+            links={evolutionData.links}
+          />
         </g>
       )
 
