@@ -1,4 +1,5 @@
-import { EvolutionCircle } from "./EvolutionCircle";
+// import { EvolutionCircle } from "./EvolutionCircle";
+import { linkHorizontal} from "d3";
 
 export   const ContrailsEvolution = ({
     clusterKey, 
@@ -38,41 +39,76 @@ export   const ContrailsEvolution = ({
       // console.log(nodeLink)
       let links = Object.keys(nodeLink)
       links.forEach(link => {
-        console.log(link)
-        evolutionData.links.push({
-          "node01":nodeLink[link].source,
-          "node02":nodeLink[link].target
-        })
+        // console.log(link)
+        evolutionData.links.push(
+          // this one is needed is we want d3.line
+          // [
+          //   {"x": evolutionData.nodes[nodeLink[link].source].x, "y": evolutionData.nodes[nodeLink[link].source].y},
+           
+          //   {"x":evolutionData.nodes[nodeLink[link].target].x, "y": evolutionData.nodes[nodeLink[link].target].y}
+          // ]
+          // this one is for linkHorizontal or linkVertical
+          {
+            "source": [evolutionData.nodes[nodeLink[link].source].x, evolutionData.nodes[nodeLink[link].source].y],
+            "target": [evolutionData.nodes[nodeLink[link].target].x, evolutionData.nodes[nodeLink[link].target].y]
+          }
+        )
 
       });
-      console.log(evolutionData)
-        
-      return (clusterKey.map(clk => {
-        let cluster = Object.keys(clusterData[clk])
-        circleYScale.domain([0, cluster.length])
-        let info = {}
-        let min = clusterData[clk][cluster[0]].length
-        let max = clusterData[clk][cluster[0]].length
-        // console.log(cluster)
-        cluster.forEach(point => {
-          info[point] = clusterData[clk][point].length
-          if(clusterData[clk][point].length < min) min = clusterData[clk][point].length
-          if(clusterData[clk][point].length > max) max = clusterData[clk][point].length
-        })
-        // console.log(info, min, max)
-        circleRadius.domain([min, max])
-        return(
-          <g transform={`translate(${offset},0)`} key={`evo${clk}`}>
-            <EvolutionCircle 
-                xScale={xScale}
-                circleYScale = {circleYScale}
-                cluster = {cluster}
-                clusterInfo = {info}
-                time={clk}
-                circleRadius={circleRadius}
+      console.log(evolutionData.links)
+      return(
+        <g transform={`translate(${offset},0)`}>
+          {evolutionData.nodes.map(node=>(
+            <circle className="circleCon"
+              cx={node.x}
+              cy={node.y}
+              r={node.r}
+              
             />
-          </g>
-        )
-      }))
+          ))}
+          {evolutionData.links.map(link => (
+            <path className="pathCon"
+              d={linkHorizontal()
+                  .source(d =>d.source)
+                  .target(d=>d.target)
+                  (link)
+                }
+            />
+          ))}
+        </g>
+      )
 
     };
+
+
+
+/**
+ * return (clusterKey.map(clk => {
+      let cluster = Object.keys(clusterData[clk])
+      circleYScale.domain([0, cluster.length])
+      let info = {}
+      let min = clusterData[clk][cluster[0]].length
+      let max = clusterData[clk][cluster[0]].length
+      // console.log(cluster)
+      cluster.forEach(point => {
+        info[point] = clusterData[clk][point].length
+        if(clusterData[clk][point].length < min) min = clusterData[clk][point].length
+        if(clusterData[clk][point].length > max) max = clusterData[clk][point].length
+      })
+      // console.log(info, min, max)
+      circleRadius.domain([min, max])
+      return(
+        <g transform={`translate(${offset},0)`} key={`evo${clk}`}>
+          <EvolutionCircle 
+              xScale={xScale}
+              circleYScale = {circleYScale}
+              cluster = {cluster}
+              clusterInfo = {info}
+              time={clk}
+              circleRadius={circleRadius}
+          />
+        </g>
+      )
+    }))
+ */
+    

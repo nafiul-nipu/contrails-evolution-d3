@@ -5,3 +5,10 @@
 .circleCon{
   fill: #42A5B3;
 }
+
+.pathCon{
+  fill: none;
+  stroke: #684664;
+  stroke-opacity: 0.75;
+  stroke-width: 0.2em;
+}

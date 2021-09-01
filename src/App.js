@@ -1,5 +1,5 @@
 import './App.css';
-import { scaleBand, scaleLinear, line} from 'd3';
+import { scaleBand, scaleLinear} from 'd3';
 import {useData} from  './components/useData'
 import { AxisBottom } from './components/AxisBottom';
 import { Border } from './components/Border';
