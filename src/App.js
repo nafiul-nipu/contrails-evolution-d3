@@ -31,7 +31,7 @@ function App() {
                     .paddingInner(0.1)
 
   const circleYScale = scaleLinear()
-                        .range([margin.top, innerHeight - margin.top-margin.bottom])
+                        .range([margin.top, innerHeight])
 
 
   const circleRadius = scaleLinear()
