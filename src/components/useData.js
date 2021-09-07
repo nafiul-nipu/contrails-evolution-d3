@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import cluster from "../data/cluster.json";
-import network from"../data/network.json"
+import cluster from "../data/cluster2.1.json";
+import network from"../data/network2.1.json"
 
 export const useData = () =>{
     const [clusterData, setClusterData] = useState(null)
