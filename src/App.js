@@ -18,7 +18,7 @@ function App() {
     return <div>Loading .... </div>
   }
 
-  // console.log(clusterData['0.07'])
+  // console.log(nodeLink)
   const clusterKey = Object.keys(clusterData)
 
   // console.log(clusterKey)
