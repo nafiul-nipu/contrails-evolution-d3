@@ -40,7 +40,7 @@ export   const ContrailsEvolution = ({
       })
 
       // console.log(evolutionData.nodes)
-      console.log(nodeLink)
+      // console.log(nodeLink)
       let links = Object.keys(nodeLink)
       links.forEach(link => {
         // console.log(link)
