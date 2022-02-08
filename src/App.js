@@ -1,19 +1,44 @@
 import './App.css';
+import { useEffect, useState } from 'react';
 import { scaleBand, scaleLinear} from 'd3';
 import {useData} from  './components/useData'
-import { AxisBottom } from './components/AxisBottom';
-import { Border } from './components/Border';
-import { ContrailsEvolution } from './components/ContrailsEvolution';
+import { Evolution } from './components/Evolution';
 
+import cluster from "./data/contrails1-cluster.json";
+import network from"./data/contrails1-network.json"
+
+import cluster2 from "./data/contrails2-cluster.json";
+import network2 from"./data/contrails2-network.json"
 
 
 const width = 960;
-const height = 500;
+const height = window.innerHeight / 2.1;
 const margin = {top:20, right:30, bottom:50, left:30};
 
 function App() {
-  const {clusterData, nodeLink} = useData(); 
+  // const {clusterData, nodeLink} = useData(cluster, network); 
+  // const {clusterData2, nodeLink2} = useData(2)
 
+  const [clusterData, setClusterData] = useState(null)
+  const [nodeLink, setnNodeLink] = useState(null)
+
+  useEffect(() =>{
+    // load data
+    setClusterData(cluster)
+    setnNodeLink(network)
+  }, [cluster, network]);
+
+  const [clusterData2, setClusterData2] = useState(null)
+  const [nodeLink2, setnNodeLink2] = useState(null)
+
+  useEffect(() =>{
+    // load data
+    setClusterData2(cluster2)
+    setnNodeLink2(network2)
+  }, [cluster2, network2]);
+  
+
+  // console.log(clusterData)
   if(!clusterData){
     return <div>Loading .... </div>
   }
@@ -39,31 +64,33 @@ function App() {
   
 
   return (
-    <svg width={width} height={height}>
-      <g transform={`translate(${margin.left}, ${margin.top})`}>
-        <AxisBottom 
-          xScale={xScale}
-          innerHeight={innerHeight}
-          />
-
-        <Border 
-          xScale = {xScale}
-          heightOffset = {margin.top}
-          innerHeight={innerHeight}
+    <>
+        <Evolution
+            width = {width}
+            height = {height}
+            margin = {margin}
+            xScale = {xScale}
+            innerHeight = {innerHeight}
+            clusterKey = {clusterKey}
+            clusterData = {clusterData}
+            nodeLink = {nodeLink}
+            circleYScale = {circleYScale}
+            circleRadius = {circleRadius}
         />
-
-        <ContrailsEvolution 
-          clusterKey={clusterKey}
-          clusterData={clusterData}
-          nodeLink={nodeLink}
-          xScale={xScale}
-          circleYScale={circleYScale}
-          circleRadius={circleRadius}
-          offset={margin.top}
+        <Evolution
+            width = {width}
+            height = {height}
+            margin = {margin}
+            xScale = {xScale}
+            innerHeight = {innerHeight}
+            clusterKey = {clusterKey}
+            clusterData = {clusterData2}
+            nodeLink = {nodeLink2}
+            circleYScale = {circleYScale}
+            circleRadius = {circleRadius}
         />
+    </>
 
-      </g>
-    </svg>
   );
 }
 
