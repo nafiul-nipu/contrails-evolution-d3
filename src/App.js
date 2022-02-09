@@ -10,8 +10,11 @@ import network from"./data/contrails1-network.json"
 import cluster2 from "./data/contrails2-cluster.json";
 import network2 from"./data/contrails2-network.json"
 
+import cluster3 from "./data/contrails3-cluster.json";
+import network3 from"./data/contrails3-network.json"
 
-const width = 960;
+
+const width = 750;
 const height = window.innerHeight / 2.1;
 const margin = {top:20, right:30, bottom:50, left:30};
 
@@ -36,6 +39,16 @@ function App() {
     setClusterData2(cluster2)
     setnNodeLink2(network2)
   }, [cluster2, network2]);
+
+
+  const [clusterData3, setClusterData3] = useState(null)
+  const [nodeLink3, setnNodeLink3] = useState(null)
+
+  useEffect(() =>{
+    // load data
+    setClusterData3(cluster3)
+    setnNodeLink3(network3)
+  }, [cluster3, network3]);
   
 
   // console.log(clusterData)
@@ -86,6 +99,19 @@ function App() {
             clusterKey = {clusterKey}
             clusterData = {clusterData2}
             nodeLink = {nodeLink2}
+            circleYScale = {circleYScale}
+            circleRadius = {circleRadius}
+        />
+
+        <Evolution
+            width = {width}
+            height = {height}
+            margin = {margin}
+            xScale = {xScale}
+            innerHeight = {innerHeight}
+            clusterKey = {clusterKey}
+            clusterData = {clusterData3}
+            nodeLink = {nodeLink3}
             circleYScale = {circleYScale}
             circleRadius = {circleRadius}
         />
