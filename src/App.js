@@ -89,6 +89,7 @@ function App() {
             nodeLink = {nodeLink}
             circleYScale = {circleYScale}
             circleRadius = {circleRadius}
+            name='c1'
         />
         <Evolution
             width = {width}
@@ -101,6 +102,7 @@ function App() {
             nodeLink = {nodeLink2}
             circleYScale = {circleYScale}
             circleRadius = {circleRadius}
+            name='c2'
         />
 
         <Evolution
@@ -114,6 +116,7 @@ function App() {
             nodeLink = {nodeLink3}
             circleYScale = {circleYScale}
             circleRadius = {circleRadius}
+            name='c3'
         />
     </>
 

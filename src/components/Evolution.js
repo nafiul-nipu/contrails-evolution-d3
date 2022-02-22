@@ -12,7 +12,8 @@ export const Evolution = ({
     clusterData,
     nodeLink,
     circleYScale,
-    circleRadius
+    circleRadius,
+    name
 }) => {
 
 
@@ -38,6 +39,7 @@ export const Evolution = ({
                 circleYScale={circleYScale}
                 circleRadius={circleRadius}
                 offset={margin.top}
+                name={name}
             />
     
             </g>
