@@ -65,12 +65,13 @@ export   const ContrailsEvolution = ({
       // console.log(evolutionData)
       return(
         <g transform={`translate(${offset},0)`}>
-          <NodeDiagram 
-            nodes={evolutionData.nodes}
-          />
           <LinkDiagram 
             links={evolutionData.links}
           />
+          <NodeDiagram 
+            nodes={evolutionData.nodes}
+          />
+          
         </g>
       )
 
