@@ -8,7 +8,7 @@ export const NodeDiagram = ({nodes,name}) => {
     r={node.r}
     onMouseEnter={() => {
       // console.log('hovered')
-      d3.selectAll(`#${name}link${node.id}`)
+      d3.selectAll(`.${name}${node.id}`)
         .style('stroke-opacity', 1)
         .style('stroke', 'red')
 
@@ -16,7 +16,7 @@ export const NodeDiagram = ({nodes,name}) => {
     }}
     onMouseOut={() => {
       // console.log("hover Out")
-      d3.selectAll('.pathCon')
+      d3.selectAll('#pathCon')
         .style('stroke-opacity', 0.5)
         .style('stroke', 'grey')
     }}

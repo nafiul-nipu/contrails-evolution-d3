@@ -58,7 +58,8 @@ export   const ContrailsEvolution = ({
           // this one is for linkHorizontal or linkVertical
           // latest data source starts from 1 rather than 0, hence linck - 1
           {
-            "id": nodeLink[link].source,
+            "id1": nodeLink[link].source,
+            "id2": nodeLink[link].target,
             "source": [evolutionData.nodes[nodeLink[link].source - 1].x, evolutionData.nodes[nodeLink[link].source - 1].y],
             "target": [evolutionData.nodes[nodeLink[link].target - 1].x, evolutionData.nodes[nodeLink[link].target - 1].y]
           }
