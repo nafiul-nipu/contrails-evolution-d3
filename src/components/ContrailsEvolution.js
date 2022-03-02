@@ -12,6 +12,9 @@ export   const ContrailsEvolution = ({
     name
   }) => {
       // console.log(name)
+      console.log('cluster key: ', clusterKey)
+      console.log('cluster data', clusterData)
+      console.log('node link: ', nodeLink)
       let evolutionData = {"nodes":[], "links":[]}
       clusterKey.forEach(clk => {
 
