@@ -44,7 +44,7 @@ function App() {
     // load data
     setClusterData2(cluster2)
     setnNodeLink2(network2)
-    setsortlist(sortList2)
+    setsortlist2(sortList2)
   }, [cluster2, network2, sortList2]);
 
 
@@ -56,7 +56,7 @@ function App() {
     // load data
     setClusterData3(cluster3)
     setnNodeLink3(network3)
-    setsortlist(sortList3)
+    setsortlist3(sortList3)
   }, [cluster3, network3, sortList3]);
   
 
@@ -96,7 +96,7 @@ function App() {
             clusterKey = {clusterKey}
             clusterData = {clusterData}
             nodeLink = {nodeLink}
-            sortdata={sortList}
+            sortdata={sortlist}
             circleYScale = {circleYScale}
             circleRadius = {circleRadius}
             name='c1'
@@ -110,7 +110,7 @@ function App() {
             clusterKey = {clusterKey}
             clusterData = {clusterData2}
             nodeLink = {nodeLink2}
-            sortdata={sortList2}
+            sortdata={sortlist2}
             circleYScale = {circleYScale}
             circleRadius = {circleRadius}
             name='c2'
@@ -125,7 +125,7 @@ function App() {
             clusterKey = {clusterKey}
             clusterData = {clusterData3}
             nodeLink = {nodeLink3}
-            sortdata={sortList3}
+            sortdata={sortlist3}
             circleYScale = {circleYScale}
             circleRadius = {circleRadius}
             name='c3'
