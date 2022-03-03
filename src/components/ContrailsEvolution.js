@@ -5,6 +5,7 @@ export   const ContrailsEvolution = ({
     clusterKey, 
     clusterData, 
     nodeLink,
+    sortdata,
     xScale, 
     circleYScale, 
     circleRadius, 
@@ -12,14 +13,16 @@ export   const ContrailsEvolution = ({
     name
   }) => {
       // console.log(name)
-      console.log('cluster key: ', clusterKey)
-      console.log('cluster data', clusterData)
-      console.log('node link: ', nodeLink)
+      // console.log('cluster key: ', clusterKey)
+      // console.log('cluster data', clusterData)
+      // console.log('node link: ', nodeLink)
+      console.log('sort data: ', sortdata)
       let evolutionData = {"nodes":[], "links":[]}
       clusterKey.forEach(clk => {
 
-        let cluster = Object.keys(clusterData[clk])
-        // console.log(cluster)
+        // let cluster = Object.keys(clusterData[clk])
+        let cluster = sortdata[clk]
+        // console.log(clk, cluster, sortdata[clk])
 
         circleYScale.domain([0, cluster.length])
         let info = {}
@@ -44,13 +47,16 @@ export   const ContrailsEvolution = ({
         })
       })
 
-      // console.log(evolutionData.nodes)
-      // console.log(nodeLink)
+      console.log(evolutionData.nodes)
+      console.log(nodeLink)
       let links = Object.keys(nodeLink)
+      console.log(links)
       links.forEach(link => {
         // console.log(link)
-        // console.log(nodeLink[link].source)
+        console.log(nodeLink[link].source)
         // console.log(evolutionData.nodes)
+        let sourceIndex = evolutionData.nodes.findIndex(x => x.id === nodeLink[link].source)
+        let targetIndex = evolutionData.nodes.findIndex(x => x.id === nodeLink[link].target)
         evolutionData.links.push(
           // this one is needed is we want d3.line
           // [
@@ -63,13 +69,13 @@ export   const ContrailsEvolution = ({
           {
             "id1": nodeLink[link].source,
             "id2": nodeLink[link].target,
-            "source": [evolutionData.nodes[nodeLink[link].source - 1].x, evolutionData.nodes[nodeLink[link].source - 1].y],
-            "target": [evolutionData.nodes[nodeLink[link].target - 1].x, evolutionData.nodes[nodeLink[link].target - 1].y]
+            "source": [evolutionData.nodes[sourceIndex].x, evolutionData.nodes[sourceIndex].y],
+            "target": [evolutionData.nodes[targetIndex].x, evolutionData.nodes[targetIndex].y]
           }
         )
 
       });
-      console.log(evolutionData)
+      // console.log(evolutionData)
       return(
         <g transform={`translate(${offset},0)`}>
           <LinkDiagram 

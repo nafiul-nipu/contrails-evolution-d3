@@ -5,13 +5,16 @@ import {useData} from  './components/useData'
 import { Evolution } from './components/Evolution';
 
 import cluster from "./data/contrails1-cluster.json";
-import network from"./data/contrails1-network.json"
+import network from"./data/contrails1-network.json";
+import sortList from "./data/contrails1-sort.json"
 
 import cluster2 from "./data/contrails2-cluster.json";
-import network2 from"./data/contrails2-network.json"
+import network2 from"./data/contrails2-network.json";
+import sortList2 from "./data/contrails2-sort.json"
 
 import cluster3 from "./data/contrails3-cluster.json";
-import network3 from"./data/contrails3-network.json"
+import network3 from"./data/contrails3-network.json";
+import sortList3 from "./data/contrails3-sort.json";
 
 
 const width = 750;
@@ -24,31 +27,37 @@ function App() {
 
   const [clusterData, setClusterData] = useState(null)
   const [nodeLink, setnNodeLink] = useState(null)
+  const [sortlist, setsortlist] = useState(null)
 
   useEffect(() =>{
     // load data
     setClusterData(cluster)
     setnNodeLink(network)
-  }, [cluster, network]);
+    setsortlist(sortList)
+  }, [cluster, network, sortList]);
 
   const [clusterData2, setClusterData2] = useState(null)
   const [nodeLink2, setnNodeLink2] = useState(null)
+  const [sortlist2, setsortlist2] = useState(null)
 
   useEffect(() =>{
     // load data
     setClusterData2(cluster2)
     setnNodeLink2(network2)
-  }, [cluster2, network2]);
+    setsortlist(sortList2)
+  }, [cluster2, network2, sortList2]);
 
 
   const [clusterData3, setClusterData3] = useState(null)
   const [nodeLink3, setnNodeLink3] = useState(null)
+  const [sortlist3, setsortlist3] = useState(null)
 
   useEffect(() =>{
     // load data
     setClusterData3(cluster3)
     setnNodeLink3(network3)
-  }, [cluster3, network3]);
+    setsortlist(sortList3)
+  }, [cluster3, network3, sortList3]);
   
 
   // console.log(clusterData)
@@ -87,6 +96,7 @@ function App() {
             clusterKey = {clusterKey}
             clusterData = {clusterData}
             nodeLink = {nodeLink}
+            sortdata={sortList}
             circleYScale = {circleYScale}
             circleRadius = {circleRadius}
             name='c1'
@@ -100,6 +110,7 @@ function App() {
             clusterKey = {clusterKey}
             clusterData = {clusterData2}
             nodeLink = {nodeLink2}
+            sortdata={sortList2}
             circleYScale = {circleYScale}
             circleRadius = {circleRadius}
             name='c2'
@@ -114,6 +125,7 @@ function App() {
             clusterKey = {clusterKey}
             clusterData = {clusterData3}
             nodeLink = {nodeLink3}
+            sortdata={sortList3}
             circleYScale = {circleYScale}
             circleRadius = {circleRadius}
             name='c3'
